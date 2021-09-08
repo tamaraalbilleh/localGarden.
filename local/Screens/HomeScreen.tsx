@@ -73,17 +73,15 @@ function HomeScreen({navigation}) {
         <View style={styles.tagsContainer}>
           <Tags />
         </View>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <FlatList
-            contentContainerStyle={styles.card}
-            showsVerticalScrollIndicator={false}
-            data={list}
-            keyExtractor={item => item.id.toString()}
-            renderItem={({item}) => (
-              <Card navigation={navigation} item={item} />
-            )}
-          />
-        </ScrollView>
+        <FlatList
+          scrollToOverflowEnabled={true}
+          snapToStart={false}
+          contentContainerStyle={styles.card}
+          showsVerticalScrollIndicator={false}
+          data={list}
+          keyExtractor={item => item.id.toString()}
+          renderItem={({item}) => <Card navigation={navigation} item={item} />}
+        />
       </View>
     </>
   );
@@ -104,7 +102,8 @@ const styles = StyleSheet.create({
   },
   tagsContainer: {
     height: 100,
-    paddingLeft: 20,
+    overflow: 'visible',
+    // paddingLeft: 20,
   },
   searchcontainer: {
     paddingHorizontal: 20,

@@ -32,29 +32,29 @@ const tags = [
 function Tags() {
   return (
     <>
-      <ScrollView
-        style={styles.container}
+      <FlatList
+        style={styles.taglist}
         horizontal={true}
-        showsHorizontalScrollIndicator={false}>
-        <FlatList
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.firstRow}
-          showsVerticalScrollIndicator={false}
-          data={tags.slice(0, tags.length / 2)}
-          keyExtractor={tag => tag.id.toString()}
-          renderItem={({item}) => <Tag lable={item.label} count={item.count} />}
-        />
-      </ScrollView>
-      <ScrollView style={styles.container2}>
-        <FlatList
-          showsHorizontalScrollIndicator={false}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.secondRow}
-          data={tags.slice(tags.length / 2, tags.length)}
-          keyExtractor={tag => tag.id.toString()}
-          renderItem={({item}) => <Tag lable={item.label} count={item.count} />}
-        />
-      </ScrollView>
+        scrollsToTop={false}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.firstRow}
+        showsVerticalScrollIndicator={false}
+        data={tags.slice(0, tags.length / 2)}
+        keyExtractor={tag => tag.id.toString()}
+        renderItem={({item}) => <Tag lable={item.label} count={item.count} />}
+      />
+
+      <FlatList
+        style={styles.taglist}
+        horizontal={true}
+        scrollsToTop={false}
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.secondRow}
+        data={tags.slice(tags.length / 2, tags.length)}
+        keyExtractor={tag => tag.id.toString()}
+        renderItem={({item}) => <Tag lable={item.label} count={item.count} />}
+      />
     </>
   );
 }
@@ -78,4 +78,7 @@ const styles = StyleSheet.create({
     height: 50,
   },
   container2: {},
+  taglist: {
+    paddingLeft: 20,
+  },
 });
