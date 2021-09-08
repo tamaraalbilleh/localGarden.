@@ -21,7 +21,7 @@ function Card({item, navigation}) {
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.likeButton}
-            onPress={() => setLiked(!liked)}>
+            onPress={() => setLiked(previousState => !previousState)}>
             {!liked ? (
               <Icon
                 style={styles.icon}
@@ -41,7 +41,7 @@ function Card({item, navigation}) {
           <TouchableOpacity
             style={styles.addToCartButton}
             onPress={() => {
-              setAdded(!added);
+              setAdded(previousState => !previousState);
               navigation.navigate('Item', {
                 item: item,
               });
